@@ -1,0 +1,7 @@
+order_id,customer_id,customer_name,city,amount,order_date
+1,101,Rakesh,Surat,500,2026-01-01
+2,102,Raj,Hyderabad,700,2026-01-01
+3,103,Ravi,Surat,1000,2026-01-02
+4,101,Rakesh,Surat,500,2026-01-01
+5,104,Amit,Unknown,300,2026-01-03
+6,105,Kiran,Ahmedabad,1200,2026-01-03
