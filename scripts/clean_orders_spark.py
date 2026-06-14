@@ -9,12 +9,12 @@ df = (
     .load("data/raw/orders.csv")
 )
 
-print("Before Cleaning:")
-df.show()
-
 df = df.dropDuplicates()
 
 df = df.fillna({"city": "Unknown"})
 
-print("After Cleaning:")
-df.show()
+df.write.format("csv").mode("overwrite").option("header", "true").save(
+    "data/processed/orders_clean_spark"
+)
+
+print("Cleaned data saved to 'data/processed/orders_clean_spark'")
