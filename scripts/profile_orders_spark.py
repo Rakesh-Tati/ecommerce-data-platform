@@ -7,7 +7,7 @@ df = (
     spark.read.format("csv")
     .option("header", "true")
     .option("inferSchema", "true")
-    .load("data/rwa/orders.csv")
+    .load("data/raw/orders.csv")
 )
 
 print("Rows:", df.count())

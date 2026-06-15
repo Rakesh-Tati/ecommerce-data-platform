@@ -9,9 +9,13 @@ df = (
     .load("data/raw/orders.csv")
 )
 
+print("Rows before cleaning:", df.count())
+
 df = df.dropDuplicates()
 
 df = df.fillna({"city": "Unknown"})
+
+print("Rows after cleaning:", df.count())
 
 df.write.format("csv").mode("overwrite").option("header", "true").save(
     "data/processed/orders_clean_spark"
