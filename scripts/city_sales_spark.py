@@ -17,4 +17,5 @@ city_sales.write.format("csv").mode("overwrite").option("header", "true").save(
     "data/analytics/city_sales_spark"
 )
 print("City sales data saved to 'data/analytics/city_sales'")
+
 city_sales.show()
