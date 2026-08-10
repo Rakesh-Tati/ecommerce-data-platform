@@ -3,7 +3,7 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder \
     .appName("Ecommerce Data Platform") \
     .getOrCreate()
-    
+
 df = spark.read.format("csv") \
     .option("header", "true") \
     .option("inferSchema", "true") \

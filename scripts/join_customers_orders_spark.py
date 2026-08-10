@@ -1,8 +1,15 @@
+from encodings.punycode import T
+
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import sum as spark_sum, rank, col
+from pyspark.sql.functions import sum as spark_sum, rank, col, broadcast
 from pyspark.sql.window import Window
 
-spark = SparkSession.builder.appName("Ecommerce Data Platform").getOrCreate()
+spark = (
+    SparkSession.builder.appName("Ecommerce Data Platform")
+    .config("spark.sql.autoBroadcastJoinThreshold", -1)
+    .config("spark.sql.shuffle.partitions", "4")
+    .getOrCreate()
+)
 
 
 def read_csv(path):
@@ -12,6 +19,7 @@ def read_csv(path):
         .option("inferSchema", "true")
         .load(path)
     )
+
 
 orders_df = read_csv("data/raw/orders.csv")
 customers_df = read_csv("data/raw/customers.csv").withColumnRenamed(
@@ -32,7 +40,9 @@ customers_sales_df = customers_sales_df.withColumn(
 )
 
 top_customers_df = customers_sales_df.filter(col("sales_rank") <= 3)
+joined_df.explain(True)
 
+print("Number of partitions in joined_df:", joined_df.rdd.getNumPartitions())
 top_customers_df.show()
 
 spark.stop()

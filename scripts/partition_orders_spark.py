@@ -3,10 +3,10 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder.appName("PartitionOrders").getOrCreate()
 
 df = (
-    spark.read.format("csv")
+    spark.read.format("parquet")
     .option("header", "true")
     .option("inferSchema", "true")
-    .load("data/raw/orders.csv")
+    .load("data/processed/orders_clean_spark")
 )
 
 df.write.format("parquet").mode("overwrite").partitionBy("order_date").save(
