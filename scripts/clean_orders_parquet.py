@@ -1,5 +1,3 @@
-from json import load
-
 from pyspark.sql import SparkSession
 
 spark = SparkSession.builder.appName("Ecommerce Data Platform").getOrCreate()

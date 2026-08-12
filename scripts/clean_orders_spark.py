@@ -22,3 +22,5 @@ df.write.format("csv").mode("overwrite").option("header", "true").save(
 )
 
 print("Cleaned data saved to 'data/processed/orders_clean_spark'")
+
+spark.stop()

@@ -1,1 +1,34 @@
-venv
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+
+# IDE
+.vscode/
+
+# Spark generated files
+*.crc
+_SUCCESS
+part-*
+*.part-*
+
+# Logs
+*.log
+logs/
+
+# Airflow local files
+airflow/logs/
+airflow/*.db
+airflow/airflow.cfg
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS
+.DS_Store
+Thumbs.db

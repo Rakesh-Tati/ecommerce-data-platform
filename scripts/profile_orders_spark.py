@@ -24,3 +24,5 @@ df.select([count(when(col(c).isNull(), c)).alias(c) for c in df.columns]).show()
 print("\nDuplicate rows:")
 
 print(df.count() - df.dropDuplicates().count())
+
+spark.stop()

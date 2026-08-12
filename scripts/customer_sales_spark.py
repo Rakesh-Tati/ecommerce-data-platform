@@ -1,5 +1,4 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import sum
 
 spark = SparkSession.builder.appName("Ecommerce Data Platform").getOrCreate()
 
@@ -23,3 +22,4 @@ customer_sales.write.format("csv").mode("overwrite").option("header", "true").sa
 
 print("Customer sales data saved to 'data/analytics/customer_sales_spark'")
 customer_sales.show()
+spark.stop()

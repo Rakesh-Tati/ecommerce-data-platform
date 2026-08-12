@@ -3,7 +3,7 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder.appName("PartitionOrders").getOrCreate()
 
 df = (
-    spark.read.format("parquet")
+    spark.read.format("csv")
     .option("header", "true")
     .option("inferSchema", "true")
     .load("data/processed/orders_clean_spark")

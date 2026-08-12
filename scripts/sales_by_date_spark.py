@@ -16,7 +16,7 @@ daily_sales_df = (
     .orderBy("order_date")
 )
 
-daily_sales_df.write.format("csv").option("header", "true").save(
+daily_sales_df.write.format("csv").option("header", "true").mode("overwrite").save(
     "data/analytics/sales_by_date_spark"
 )
 
