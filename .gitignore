@@ -32,3 +32,6 @@ airflow/airflow.cfg
 # OS
 .DS_Store
 Thumbs.db
+
+# WSL virtual environment
+.venv-wsl/
